@@ -14,7 +14,7 @@ jobs:
     - name: Build and Publish FRR releases for FRR 7.2 and Debian 10
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: mestalstack/frr
+        name: metalstack/frr
         username: metalstackci
         password: ${{ secrets.DOCKER_HUB_TOKEN }}
         buildargs: >
@@ -37,7 +37,7 @@ jobs:
     - name: Build and Publish FRR releases for FRR 7.1 and Ubuntu 19.10
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: mestalstack/frr
+        name: metalstack/frr
         username: metalstackci
         password: ${{ secrets.DOCKER_HUB_TOKEN }}
         buildargs: >
@@ -54,7 +54,7 @@ jobs:
     - name: Build and Publish FRR releases for FRR 7.2 and Ubuntu 19.10
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: mestalstack/frr
+        name: metalstack/frr
         username: metalstackci
         password: ${{ secrets.DOCKER_HUB_TOKEN }}
         buildargs: >
@@ -71,7 +71,7 @@ jobs:
     - name: Build and Publish FRR releases for FRR 7.2 and Ubuntu 20.04
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: mestalstack/frr
+        name: metalstack/frr
         username: metalstackci
         password: ${{ secrets.DOCKER_HUB_TOKEN }}
         buildargs: >
