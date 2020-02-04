@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build:
+  build-debian:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -29,6 +29,11 @@ jobs:
           7.2.1-debian-10,
           7.2-debian-10,
           7-debian-10
+  build-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/checkout@master
     - name: Build and Publish FRR releases for FRR 7.1 and Ubuntu 19.10
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
