@@ -17,8 +17,6 @@ ENV LIBYANG_URL=https://ci1.netdef.org/artifact/LIBYANG-YANGRELEASE/shared \
 
 WORKDIR /artifacts
 RUN set -ex \
- && sed 's@archive.ubuntu.com@de.archive.ubuntu.com@' -i /etc/apt/sources.list \
- && sed 's@security.ubuntu.com@de.archive.ubuntu.com@' -i /etc/apt/sources.list \
  && apt-get update --quiet=2 \
  && apt-get install --quiet=2 --no-install-recommends ca-certificates curl \
  && curl -fLOOS ${LIBYANG_URL}/build-${LIBYANG_BUILD}/Debian-AMD64-Packages/${LIBYANG_DEV_PKG} \
