@@ -11,78 +11,20 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - uses: actions/checkout@master
-    - name: Build and Publish FRR releases for FRR 7.2 and Debian 10
-      uses: elgohr/Publish-Docker-Github-Action@master
+    - name: Build and Publish FRR releases for FRR and Debian
+      uses: metal-stack/action-docker-make@master
       with:
-        name: metalstack/frr
         username: metalstackci
         password: ${{ secrets.DOCKER_HUB_TOKEN }}
-        buildargs: >
-          OS_NAME=debian,
-          OS_VERSION=10,
-          FRR_TAG=frr-7.2.1,
-          RTR_TAG=v0.6.3,
-          LIBYANG_VERSION=0.16,
-          LIBYANG_BUILD=00010,
-          LIBYANG_BUILD_ID=105-1
-        tags: >
-          7.2.1-debian-10,
-          7.2-debian-10,
-          7-debian-10
+        args: --no-lint --file docker-make.debian.yaml
   build-ubuntu:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - uses: actions/checkout@master
-    - name: Build and Publish FRR releases for FRR 7.1 and Ubuntu 19.10
-      uses: elgohr/Publish-Docker-Github-Action@master
+    - name: Build and Publish FRR releases for FRR and Ubuntu
+      uses: metal-stack/action-docker-make@master
       with:
-        name: metalstack/frr
         username: metalstackci
         password: ${{ secrets.DOCKER_HUB_TOKEN }}
-        buildargs: >
-          OS_NAME=ubuntu,
-          OS_VERSION=19.10,
-          FRR_TAG=33abf43a3aadee243f704b7e8911b8e469c00338,
-          RTR_TAG=v0.6.3,
-          LIBYANG_VERSION=0.16,
-          LIBYANG_BUILD=00010,
-          LIBYANG_BUILD_ID=105-1
-        tags: >
-          7.1-ubuntu-19.10,
-          7-ubuntu-19.10
-    - name: Build and Publish FRR releases for FRR 7.2 and Ubuntu 19.10
-      uses: elgohr/Publish-Docker-Github-Action@master
-      with:
-        name: metalstack/frr
-        username: metalstackci
-        password: ${{ secrets.DOCKER_HUB_TOKEN }}
-        buildargs: >
-          OS_NAME=ubuntu,
-          OS_VERSION=19.10,
-          FRR_TAG=frr-7.2.1,
-          RTR_TAG=v0.6.3,
-          LIBYANG_VERSION=0.16,
-          LIBYANG_BUILD=00010,
-          LIBYANG_BUILD_ID=105-1
-        tags: >
-          7.2.1-ubuntu-19.10,
-          7.2-ubuntu-19.10
-    - name: Build and Publish FRR releases for FRR 7.2 and Ubuntu 20.04
-      uses: elgohr/Publish-Docker-Github-Action@master
-      with:
-        name: metalstack/frr
-        username: metalstackci
-        password: ${{ secrets.DOCKER_HUB_TOKEN }}
-        buildargs: >
-          OS_NAME=ubuntu,
-          OS_VERSION=20.04,
-          FRR_TAG=frr-7.2.1,
-          UBUNTU_VERSION=20.04,
-          RTR_TAG=v0.6.3,
-          LIBYANG_VERSION=0.16,
-          LIBYANG_BUILD=00010,
-          LIBYANG_BUILD_ID=105-1
-        tags: >
-          7.2.1-ubuntu-20.04,
-          7.2-ubuntu-20.04
+        args: --no-lint --file docker-make.ubuntu.yaml
