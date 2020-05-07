@@ -27,15 +27,17 @@ builds:
       - FRR_TAG=frr-7.2.1
       - OS_VERSION=20.04
   -
-    name: FRR 7.3 for Ubuntu 19.10
+    name: FRR 7.3.1 for Ubuntu 19.10
     tags:
+      - 7.3.1-ubuntu-19.10
       - 7.3-ubuntu-19.10
     build-args:
-      - FRR_TAG=frr-7.3
+      - FRR_TAG=frr-7.3.1
   -
-    name: FRR 7.3 for Ubuntu 20.04
+    name: FRR 7.3.1 for Ubuntu 20.04
     tags:
+      - 7.3.1-ubuntu-20.04
       - 7.3-ubuntu-20.04
     build-args:
-      - FRR_TAG=frr-7.3
+      - FRR_TAG=frr-7.3.1
       - OS_VERSION=20.04
