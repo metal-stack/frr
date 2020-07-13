@@ -50,8 +50,8 @@ RUN set -ex \
  && echo "yes" | mk-build-deps --install debian/control \
  && sed -i '/--enable-bgp-vnc/a --enable-cumulus=yes \\' debian/rules \
  && sed -i '/--enable-bgp-vnc/a --enable-datacenter=yes \\' debian/rules \
- && git config --global user.email "you@example.com" \
- && git config --global user.name "Your Name" \
+ && git config --global user.email "ci@metal-stack.io" \
+ && git config --global user.name "metal stack" \
  && git commit -m "Activate cumulus datacenter defaults." debian/rules \
  && ./tools/tarsource.sh -V \
  && dpkg-buildpackage 1>/dev/null
