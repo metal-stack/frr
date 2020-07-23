@@ -13,32 +13,39 @@ These artifacts are used for:
 The current build includes:
 
 ```yaml
-- name: FRR-7.1 for Ubuntu 19.10
-  build-args:
-  - FRR_TAG=33abf43a3aadee243f704b7e8911b8e469c00338
+- name: FRR 7.2.1 for Ubuntu 20.04
   tags:
-  - 7.1-ubuntu-19.10
-  - 7-ubuntu-19.10
-
-- name: FRR-7.2 for Ubuntu 19.10
+    - 7.2.1-ubuntu-20.04
+    - 7.2-ubuntu-20.04
   build-args:
-  - FRR_TAG=frr-7.2.1
+    - FRR_TAG=frr-7.2.1
+- name: FRR 7.3.1 for Ubuntu 20.04
   tags:
-  - 7.2.1-ubuntu-19.10
-  - 7.2-ubuntu-19.10
-
-- name: FRR-7.2 for Ubuntu 20.04
+    - 7.3.1-ubuntu-20.04
+    - 7.3-ubuntu-20.04
   build-args:
-  - FRR_TAG=frr-7.2.1
+    - FRR_TAG=frr-7.3.1
+- name: FRR 7.4.0 for Ubuntu 20.04
   tags:
-  - 7.2.1-ubuntu-20.04
-  - 7.2-ubuntu-20.04
-
-- name: FRR-7.2 for Debian 10
+    - 7.4.0-ubuntu-20.04
   build-args:
-  - FRR_TAG=frr-7.2.1
+    - FRR_TAG=frr-7.4
+- name: FRR 7.2.1 for Debian 10
   tags:
-  - 7.2.1-debian-10
-  - 7.2-debian-10
-  - 7-debian-10
+    - 7.2.1-debian-10
+    - 7.2-debian-10
+  build-args:
+    - FRR_TAG=frr-7.2.1
+- name: FRR 7.3.1 for Debian 10
+  tags:
+    - 7.3.1-debian-10
+    - 7.3-debian-10
+  build-args:
+    - FRR_TAG=frr-7.3.1
+- name: FRR 7.4.0 for Debian 10
+  tags:
+    - 7.4.0-debian-10
+    - 7.4-debian-10
+  build-args:
+    - FRR_TAG=frr-7.4
 ```
