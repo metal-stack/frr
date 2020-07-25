@@ -5,7 +5,7 @@ username: metalstack
 registry-host: docker.io
 default-build-args:
   - OS_NAME=ubuntu
-  - OS_VERSION=19.10
+  - OS_VERSION=20.04
   - RTR_TAG=v0.6.3
   - LIBYANG_VERSION=0.16
   - LIBYANG_BUILD=00010
@@ -17,18 +17,15 @@ builds:
       - 7.2-ubuntu-20.04
     build-args:
       - FRR_TAG=frr-7.2.1
-      - OS_VERSION=20.04
   - name: FRR 7.3.1 for Ubuntu 20.04
     tags:
       - 7.3.1-ubuntu-20.04
       - 7.3-ubuntu-20.04
     build-args:
       - FRR_TAG=frr-7.3.1
-      - OS_VERSION=20.04
   - name: FRR 7.4.0 for Ubuntu 20.04
     tags:
       - 7.4.0-ubuntu-20.04
       - 7.4-ubuntu-20.04
     build-args:
-      - FRR_TAG=frr-7.4
-      - OS_VERSION=20.04
+      - FRR_TAG=7d1d251
