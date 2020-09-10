@@ -9,8 +9,7 @@ jobs:
   build-debian:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
     - name: Build and Publish FRR releases for FRR and Debian
       uses: metal-stack/action-docker-make@master
       with:
@@ -20,8 +19,7 @@ jobs:
   build-ubuntu:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
     - name: Build and Publish FRR releases for FRR and Ubuntu
       uses: metal-stack/action-docker-make@master
       with:
