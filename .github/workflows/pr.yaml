@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Build and Publish FRR releases for FRR and Debian
+    - name: Build FRR releases for Debian
       uses: metal-stack/action-docker-make@master
       with:
         username: metalstackci
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Build and Publish FRR releases for FRR and Ubuntu
+    - name: Build FRR releases for Ubuntu
       uses: metal-stack/action-docker-make@master
       with:
         username: metalstackci
