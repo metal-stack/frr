@@ -8,10 +8,11 @@ ARG RTR_TAG
 ARG LIBYANG_VERSION
 ARG LIBYANG_BUILD
 ARG LIBYANG_BUILD_ID
+ARG LIBYANG_DISTRIBUTION
 
-ENV LIBYANG_URL=https://ci1.netdef.org/artifact/LIBYANG-YANGRELEASE/shared \
+ENV LIBYANG_URL=https://ci1.netdef.org/browse/LIBYANG-LY1REL-${LIBYANG_BUILD}/artifact/shared/${LIBYANG_DISTRIBUTION}-x86_64-Packages \
     LIBYANG_DEV_PKG=libyang-dev_${LIBYANG_VERSION}.${LIBYANG_BUILD_ID}_amd64.deb \
-    LIBYANG_PKG=libyang${LIBYANG_VERSION}_${LIBYANG_VERSION}.${LIBYANG_BUILD_ID}_amd64.deb \
+    LIBYANG_PKG=libyang1_${LIBYANG_VERSION}.${LIBYANG_BUILD_ID}_amd64.deb \
     DEBCONF_NONINTERACTIVE_SEEN=true \
     DEBIAN_FRONTEND=noninteractive
 
@@ -19,9 +20,9 @@ WORKDIR /artifacts
 RUN set -ex \
  && apt-get update --quiet=2 \
  && apt-get install --quiet=2 --no-install-recommends ca-certificates curl \
- && curl -fLOOS ${LIBYANG_URL}/build-${LIBYANG_BUILD}/Debian-AMD64-Packages/${LIBYANG_DEV_PKG} \
- && curl -fLOOS ${LIBYANG_URL}/build-${LIBYANG_BUILD}/Debian-AMD64-Packages/${LIBYANG_PKG} \
- && apt-get install --quiet --quiet --no-install-recommends \
+ && curl -fLOOS ${LIBYANG_URL}/${LIBYANG_DEV_PKG} \
+ && curl -fLOOS ${LIBYANG_URL}/${LIBYANG_PKG} \
+ && apt-get install --quiet=2 --no-install-recommends \
     debhelper \
     devscripts \
     equivs \
