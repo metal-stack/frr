@@ -29,4 +29,10 @@ builds:
       - 7.4.0-1-debian-10
       - 7.4-debian-10
     build-args:
-      - FRR_TAG=7d1d251
+      - FRR_TAG=frr-7.4
+  - name: FRR 7.5.0 for Debian 10
+    tags:
+      - 7.5.0-debian-10
+      - 7.5-debian-10
+    build-args:
+      - FRR_TAG=frr-7.5
