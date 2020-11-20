@@ -1,7 +1,7 @@
 ---
 version: '1'
 name: frr
-username: metalstack
+username: metal-stack
 registry-host: ghcr.io
 default-build-args:
   - OS_NAME=debian

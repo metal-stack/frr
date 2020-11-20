@@ -18,4 +18,4 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_REGISTRY_USER }}
         password: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
-        args: --no-lint --no-push --file docker-make.${{ matrix.os }}.yaml
+        args: --no-lint --file docker-make.${{ matrix.os }}.yaml
