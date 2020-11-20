@@ -1,7 +1,7 @@
 name: Docker Image from master
 
 on:
-  push:
+  pull_request:
     branches:
       - master
 
@@ -16,6 +16,6 @@ jobs:
     - name: Build FRR releases for ${{ matrix.os }}
       uses: metal-stack/action-docker-make@master
       with:
-        username: ${{ secrets.DOCKER_REGISTRY_USER }}
-        password: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
+        username: metalstackci
+        password: ${{ secrets.DOCKER_HUB_TOKEN }}
         args: --no-lint --no-push --file docker-make.${{ matrix.os }}.yaml

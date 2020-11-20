@@ -2,7 +2,7 @@
 version: '1'
 name: frr
 username: metalstack
-registry-host: docker.io
+registry-host: ghcr.io
 default-build-args:
   - OS_NAME=ubuntu
   - OS_VERSION=20.04
