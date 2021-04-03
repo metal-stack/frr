@@ -12,15 +12,13 @@ default-build-args:
   - LIBYANG_BUILD_ID=gbp624fc6
   - LIBYANG_DISTRIBUTION=Debian-10
 builds:
-  - name: FRR 7.2.1 for Debian 10
-    tags:
-      - 7.2.1-1-debian-10
-      - 7.2-debian-10
-    build-args:
-      - FRR_TAG=frr-7.2.1
   - name: FRR 7.5.0 for Debian 10
     tags:
       - 7.5.0-debian-10
-      - 7.5-debian-10
     build-args:
       - FRR_TAG=frr-7.5
+  - name: FRR 7.5.1 for Debian 10
+    tags:
+      - 7.5.1-debian-10
+    build-args:
+      - FRR_TAG=frr-7.5.1

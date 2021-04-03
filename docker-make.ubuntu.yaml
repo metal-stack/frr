@@ -12,15 +12,13 @@ default-build-args:
   - LIBYANG_BUILD_ID=gbpe4e74c
   - LIBYANG_DISTRIBUTION=Ubuntu-20.04
 builds:
-  - name: FRR 7.2.1 for Ubuntu 20.04
-    tags:
-      - 7.2.1-1-ubuntu-20.04
-      - 7.2-ubuntu-20.04
-    build-args:
-      - FRR_TAG=frr-7.2.1
   - name: FRR 7.5.0 for Ubuntu 20.04
     tags:
       - 7.5.0-ubuntu-20.04
-      - 7.5-ubuntu-20.04
     build-args:
       - FRR_TAG=frr-7.5
+  - name: FRR 7.5.1 for Ubuntu 20.04
+    tags:
+      - 7.5.1-ubuntu-20.04
+    build-args:
+      - FRR_TAG=frr-7.5.1
