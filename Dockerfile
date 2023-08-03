@@ -24,19 +24,8 @@ RUN set -ex \
    ./${LIBYANG_DEV_PKG} \
    ./${LIBYANG_PKG} \
     fakeroot \
-    git
-
-RUN set -ex \
- && git clone https://github.com/rtrlib/rtrlib.git \
- && cd rtrlib \
- && git checkout ${RTR_TAG} \
- && echo "yes" | mk-build-deps --install debian/control \
- && dpkg-buildpackage 1>/dev/null \
- && cd - \
- && apt-get install --quiet=2 ./librtr0*.deb ./librtr-dev*.deb
-# Package Debian as of:
-# http://docs.frrouting.org/projects/dev-guide/en/latest/packaging-debian.html
-# Activated build flags can be checked later on with: bash -c 'vtysh -c "show version"'
+    git \
+    librtr-dev
 
 WORKDIR /artifacts
 RUN set -ex \
@@ -50,7 +39,10 @@ RUN set -ex \
  && git config --global user.name "metal stack" \
  && git commit -m "Activate cumulus datacenter defaults." debian/rules \
  && ./tools/tarsource.sh -V \
- && dpkg-buildpackage 1>/dev/null
+ # # FIX for
+ # dh_install: warning: Cannot find (any matches for) "doc/user/_build/texinfo/*.png" (tried in ., debian/tmp)
+ && mkdir -p  doc/user/_build/texinfo && touch doc/user/_build/texinfo/fake.png \
+ && dpkg-buildpackage -b 1>/dev/null
 
 FROM scratch
 WORKDIR /artifacts
