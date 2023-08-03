@@ -5,14 +5,9 @@ FROM ${OS_NAME}:${OS_VERSION} as frr-builder
 
 ARG FRR_TAG
 ARG RTR_TAG
-ARG LIBYANG_VERSION
-ARG LIBYANG_BUILD
-ARG LIBYANG_BUILD_ID
-ARG LIBYANG_DISTRIBUTION
-
-ENV LIBYANG_URL=https://ci1.netdef.org/browse/LIBYANG-LY1REL-${LIBYANG_BUILD}/artifact/shared/${LIBYANG_DISTRIBUTION}-x86_64-Packages \
-    LIBYANG_DEV_PKG=libyang-dev_${LIBYANG_VERSION}.${LIBYANG_BUILD_ID}_amd64.deb \
-    LIBYANG_PKG=libyang1_${LIBYANG_VERSION}.${LIBYANG_BUILD_ID}_amd64.deb \
+ENV LIBYANG_URL=https://deb.frrouting.org/frr/libyang1 \
+    LIBYANG_DEV_PKG=libyang-dev_1.0.176-2_amd64.deb \
+    LIBYANG_PKG=libyang1_1.0.176-2_amd64.deb \
     DEBCONF_NONINTERACTIVE_SEEN=true \
     DEBIAN_FRONTEND=noninteractive
 
