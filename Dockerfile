@@ -5,14 +5,9 @@ FROM ${OS_NAME}:${OS_VERSION} as frr-builder
 
 ARG FRR_TAG
 ARG RTR_TAG
-ARG LIBYANG_VERSION
-ARG LIBYANG_BUILD
-ARG LIBYANG_BUILD_ID
-ARG LIBYANG_DISTRIBUTION
-
-ENV LIBYANG_URL=https://ci1.netdef.org/browse/LIBYANG-LY1REL-${LIBYANG_BUILD}/artifact/shared/${LIBYANG_DISTRIBUTION}-x86_64-Packages \
-    LIBYANG_DEV_PKG=libyang-dev_${LIBYANG_VERSION}.${LIBYANG_BUILD_ID}_amd64.deb \
-    LIBYANG_PKG=libyang1_${LIBYANG_VERSION}.${LIBYANG_BUILD_ID}_amd64.deb \
+ENV LIBYANG_URL=https://deb.frrouting.org/frr/libyang1 \
+    LIBYANG_DEV_PKG=libyang-dev_1.0.176-2_amd64.deb \
+    LIBYANG_PKG=libyang1_1.0.176-2_amd64.deb \
     DEBCONF_NONINTERACTIVE_SEEN=true \
     DEBIAN_FRONTEND=noninteractive
 
@@ -29,19 +24,8 @@ RUN set -ex \
    ./${LIBYANG_DEV_PKG} \
    ./${LIBYANG_PKG} \
     fakeroot \
-    git
-
-RUN set -ex \
- && git clone https://github.com/rtrlib/rtrlib.git \
- && cd rtrlib \
- && git checkout ${RTR_TAG} \
- && echo "yes" | mk-build-deps --install debian/control \
- && dpkg-buildpackage 1>/dev/null \
- && cd - \
- && apt-get install --quiet=2 ./librtr0*.deb ./librtr-dev*.deb
-# Package Debian as of:
-# http://docs.frrouting.org/projects/dev-guide/en/latest/packaging-debian.html
-# Activated build flags can be checked later on with: bash -c 'vtysh -c "show version"'
+    git \
+    librtr-dev
 
 WORKDIR /artifacts
 RUN set -ex \
@@ -55,7 +39,10 @@ RUN set -ex \
  && git config --global user.name "metal stack" \
  && git commit -m "Activate cumulus datacenter defaults." debian/rules \
  && ./tools/tarsource.sh -V \
- && dpkg-buildpackage 1>/dev/null
+ # # FIX for
+ # dh_install: warning: Cannot find (any matches for) "doc/user/_build/texinfo/*.png" (tried in ., debian/tmp)
+ && mkdir -p  doc/user/_build/texinfo && touch doc/user/_build/texinfo/fake.png \
+ && dpkg-buildpackage -b 1>/dev/null
 
 FROM scratch
 WORKDIR /artifacts
