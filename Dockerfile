@@ -5,10 +5,11 @@ FROM ${OS_NAME}:${OS_VERSION} as frr-builder
 
 ARG FRR_TAG
 ARG RTR_TAG
-ENV LIBYANG_URL=https://deb.frrouting.org/frr/libyang1 \
-    LIBYANG_DEV_PKG=libyang-dev_1.0.176-2_amd64.deb \
-    LIBYANG_PKG=libyang1_1.0.176-2_amd64.deb \
-    DEBCONF_NONINTERACTIVE_SEEN=true \
+ARG LIBYANG_URL
+ARG LIBYANG_DEV_PKG
+ARG LIBYANG_PKG
+
+ENV DEBCONF_NONINTERACTIVE_SEEN=true \
     DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /artifacts
@@ -38,7 +39,7 @@ RUN set -ex \
  && git config --global user.email "ci@metal-stack.io" \
  && git config --global user.name "metal stack" \
  && git commit -m "Activate cumulus datacenter defaults." debian/rules \
- && ./tools/tarsource.sh -V \
+ && (./tools/tarsource.sh -V || true) \
  # # FIX for
  # dh_install: warning: Cannot find (any matches for) "doc/user/_build/texinfo/*.png" (tried in ., debian/tmp)
  && mkdir -p  doc/user/_build/texinfo && touch doc/user/_build/texinfo/fake.png \
