@@ -7,6 +7,14 @@ default-build-args:
   - OS_NAME=ubuntu
   - OS_VERSION=22.04
 builds:
+  - name: FRR 9.1 for Ubuntu 22.04
+    tags:
+      - 9.1-ubuntu-22.04
+    build-args:
+      - FRR_TAG=frr-9.1
+      - LIBYANG_URL=https://deb.frrouting.org/frr/pool/frr-9/liby/libyang2
+      - LIBYANG_PKG=libyang2_2.1.80-1~ubuntu22.04u1_amd64.deb
+      - LIBYANG_DEV_PKG=libyang2-dev_2.1.80-1~ubuntu22.04u1_amd64.deb
   - name: FRR 9.0.1 for Ubuntu 22.04
     tags:
       - 9.0.1-ubuntu-22.04
