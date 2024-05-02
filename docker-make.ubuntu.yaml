@@ -7,6 +7,15 @@ default-build-args:
   - OS_NAME=ubuntu
   - OS_VERSION=22.04
 builds:
+  - name: FRR 10 for Ubuntu 24.04
+    tags:
+      - 10.0-ubuntu-24.04
+    build-args:
+      - FRR_TAG=frr-10.0
+      - OS_VERSION=24.04
+      - LIBYANG_URL=https://deb.frrouting.org/frr/pool/frr-10/liby/libyang2
+      - LIBYANG_PKG=libyang2_2.1.128-2~ubuntu24.04u1_amd64.deb
+      - LIBYANG_DEV_PKG=libyang2-dev_2.1.128-2~ubuntu24.04u1_amd64.deb
   - name: FRR 10 for Ubuntu 22.04
     tags:
       - 10.0-ubuntu-22.04
