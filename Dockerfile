@@ -1,7 +1,7 @@
-ARG OS_NAME
-ARG OS_VERSION
+ARG OS_NAME=ubuntu
+ARG OS_VERSION=24.04
 
-FROM ${OS_NAME}:${OS_VERSION} as frr-builder
+FROM ${OS_NAME}:${OS_VERSION} AS frr-builder
 
 ARG FRR_TAG
 ARG RTR_TAG
@@ -35,11 +35,9 @@ RUN set -ex \
  && git checkout ${FRR_TAG} \
  && echo "yes" | mk-build-deps --install debian/control \
  && sed -i '/--enable-bgp-vnc/a --enable-cumulus=yes \\' debian/rules \
- && sed -i '/--enable-bgp-vnc/a --enable-datacenter=yes \\' debian/rules \
  && git config --global user.email "ci@metal-stack.io" \
  && git config --global user.name "metal stack" \
- && git commit -m "Activate cumulus datacenter defaults." debian/rules \
- && (./tools/tarsource.sh -V || true) \
+ && git commit -m "Activate cumulus defaults." debian/rules \
  # # FIX for
  # dh_install: warning: Cannot find (any matches for) "doc/user/_build/texinfo/*.png" (tried in ., debian/tmp)
  && mkdir -p  doc/user/_build/texinfo && touch doc/user/_build/texinfo/fake.png \
