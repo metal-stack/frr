@@ -7,44 +7,12 @@ default-build-args:
   - OS_NAME=ubuntu
   - OS_VERSION=22.04
 builds:
-  - name: FRR 10 for Ubuntu 24.04
+  - name: FRR 10.4.1 for Ubuntu 24.04
     tags:
-      - 10.0-ubuntu-24.04
+      - 10.4.1-ubuntu-24.04
     build-args:
-      - FRR_TAG=frr-10.0
+      - FRR_TAG=frr-10.4.1
       - OS_VERSION=24.04
       - LIBYANG_URL=https://deb.frrouting.org/frr/pool/frr-10/liby/libyang2
       - LIBYANG_PKG=libyang2_2.1.128-2~ubuntu24.04u1_amd64.deb
       - LIBYANG_DEV_PKG=libyang2-dev_2.1.128-2~ubuntu24.04u1_amd64.deb
-  - name: FRR 10 for Ubuntu 22.04
-    tags:
-      - 10.0-ubuntu-22.04
-    build-args:
-      - FRR_TAG=frr-10.0
-      - LIBYANG_URL=https://deb.frrouting.org/frr/pool/frr-10/liby/libyang2
-      - LIBYANG_PKG=libyang2_2.1.128-2~ubuntu22.04u1_amd64.deb
-      - LIBYANG_DEV_PKG=libyang2-dev_2.1.128-2~ubuntu22.04u1_amd64.deb
-  - name: FRR 9.1 for Ubuntu 22.04
-    tags:
-      - 9.1-ubuntu-22.04
-    build-args:
-      - FRR_TAG=frr-9.1
-      - LIBYANG_URL=https://deb.frrouting.org/frr/pool/frr-9/liby/libyang2
-      - LIBYANG_PKG=libyang2_2.1.128-2~ubuntu22.04u1_amd64.deb
-      - LIBYANG_DEV_PKG=libyang2-dev_2.1.128-2~ubuntu22.04u1_amd64.deb
-  - name: FRR 9.0.2 for Ubuntu 22.04
-    tags:
-      - 9.0.2-ubuntu-22.04
-    build-args:
-      - FRR_TAG=frr-9.0.2
-      - LIBYANG_URL=https://deb.frrouting.org/frr/pool/frr-9/liby/libyang2
-      - LIBYANG_PKG=libyang2_2.1.128-2~ubuntu22.04u1_amd64.deb
-      - LIBYANG_DEV_PKG=libyang2-dev_2.1.128-2~ubuntu22.04u1_amd64.deb
-  - name: FRR 7.5.1 for Ubuntu 22.04
-    tags:
-      - 7.5.1-ubuntu-22.04
-    build-args:
-      - FRR_TAG=frr-7.5.1
-      - LIBYANG_URL=https://deb.frrouting.org/frr/libyang1
-      - LIBYANG_PKG=libyang1_1.0.176-2_amd64.deb
-      - LIBYANG_DEV_PKG=libyang-dev_1.0.176-2_amd64.deb
