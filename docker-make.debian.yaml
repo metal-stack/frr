@@ -6,7 +6,6 @@ registry-host: ghcr.io
 default-build-args:
   - OS_NAME=debian
   - OS_VERSION=12
-  - RTR_TAG=v0.7.0
 builds:
   - name: FRR 10.4.1 for Debian 12
     tags:
@@ -17,3 +16,13 @@ builds:
       - LIBYANG_PKG=libyang2_2.1.128-2~deb12u1_amd64.deb
       - LIBYANG_DEV_PKG=libyang2-dev_2.1.128-2~deb12u1_amd64.deb
 
+  # - name: FRR 10.4.1 for Debian 13
+  #   tags:
+  #     - 10.4.1-debian-13
+  #   build-args:
+  #     - OS_NAME=debian
+  #     - OS_VERSION=13
+  #     - FRR_TAG=frr-10.4.1
+  #     - LIBYANG_URL=https://deb.frrouting.org/frr/pool/frr-10/liby/libyang2
+  #     - LIBYANG_PKG=libyang2_2.1.128-2~deb13u2_amd64.deb
+  #     - LIBYANG_DEV_PKG=libyang2-dev_2.1.128-2~deb12u2_amd64.deb
